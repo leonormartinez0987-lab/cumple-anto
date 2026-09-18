@@ -1,0 +1,795 @@
+:root {
+    --primary: #d45a78;
+    --primary-dark: #9d4059;
+    --primary-gradient: linear-gradient(135deg, #e86b8b, #b83f5f);
+    --bg-light: #fff8fa;
+    --bg-card: #ffffff;
+    --text-color: #5d4b50;
+    --text-heading: #9d4059;
+    --heart-color: #e63946;
+    --shadow-soft: 0 10px 30px rgba(180, 55, 88, 0.12);
+    --shadow-hover: 0 18px 35px rgba(180, 55, 88, 0.22);
+    --radius: 16px;
+    --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--bg-light);
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* =========================
+   ELEMENTOS CORAZÓN CSS
+   ========================= */
+.corazon-grande,
+.corazon-frase,
+.corazon-carta,
+.corazon-final,
+.corazon-mini,
+.corazon-pequeno,
+.corazon-flotante {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    transform: rotate(-45deg);
+    background: var(--heart-color);
+    display: inline-block;
+}
+
+.corazon-grande::before, .corazon-grande::after,
+.corazon-frase::before, .corazon-frase::after,
+.corazon-carta::before, .corazon-carta::after,
+.corazon-final::before, .corazon-final::after,
+.corazon-mini::before, .corazon-mini::after,
+.corazon-pequeno::before, .corazon-pequeno::after,
+.corazon-flotante::before, .corazon-flotante::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.corazon-grande::before, .corazon-frase::before, .corazon-carta::before,
+.corazon-final::before, .corazon-mini::before, .corazon-pequeno::before,
+.corazon-flotante::before {
+    top: -50%;
+    left: 0;
+}
+
+.corazon-grande::after, .corazon-frase::after, .corazon-carta::after,
+.corazon-final::after, .corazon-mini::after, .corazon-pequeno::after,
+.corazon-flotante::after {
+    top: 0;
+    left: 50%;
+}
+
+/* =========================
+   SECCIÓN INICIO
+   ========================= */
+.inicio {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: 
+        radial-gradient(circle at 15% 20%, #ffe1eb 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, #ffdce7 0%, transparent 40%),
+        linear-gradient(135deg, #fff8fa, #ffeaf0);
+}
+
+.contenido-inicio {
+    width: 90%;
+    max-width: 800px;
+    z-index: 2;
+}
+
+.corazon-grande {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 35px;
+    animation: latido 1.6s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.pequeno {
+    color: var(--primary-dark);
+    font-size: 13px;
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.inicio h1 {
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(50px, 8vw, 90px);
+    color: var(--primary-dark);
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.inicio h2 {
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(65px, 11vw, 120px);
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(212, 90, 120, 0.15);
+}
+
+.mensaje-inicio {
+    max-width: 580px;
+    margin: 0 auto 30px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.boton-principal {
+    border: none;
+    padding: 16px 36px;
+    border-radius: 50px;
+    background: var(--primary-gradient);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.boton-principal:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.boton-principal:active {
+    transform: translateY(-1px);
+}
+
+.estrella {
+    font-size: 18px;
+}
+
+.flecha {
+    margin-top: 40px;
+    color: var(--primary);
+    font-size: 32px;
+    animation: saltar 1.8s infinite;
+}
+
+/* =========================
+   DECORACIONES FLOTANTES
+   ========================= */
+.decoracion {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--heart-color);
+    transform: rotate(-45deg);
+    opacity: 0.4;
+}
+
+.decoracion-1 { top: 15%; left: 8%; animation: flotar 4s ease-in-out infinite; }
+.decoracion-2 { top: 20%; right: 10%; animation: flotar 5s ease-in-out infinite reverse; }
+.decoracion-3 { bottom: 15%; left: 12%; animation: flotar 4.5s ease-in-out infinite; }
+
+/* =========================
+   INTRODUCCIÓN
+   ========================= */
+.introduccion {
+    padding: 100px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+}
+
+.introduccion.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.estrella-grande {
+    color: var(--primary);
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.introduccion h2,
+.titulo-seccion h2,
+.seccion-carta h2,
+.final h2 {
+    font-family: "Dancing Script", cursive;
+    color: var(--text-heading);
+    font-size: clamp(40px, 6vw, 60px);
+    margin-bottom: 20px;
+}
+
+.introduccion p {
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+/* =========================
+   GALERÍA
+   ========================= */
+.galeria {
+    padding: 90px 4%;
+    background: #ffffff;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+}
+
+.galeria.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.titulo-seccion {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.camara {
+    color: var(--primary);
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.titulo-seccion p {
+    color: #80666d;
+    font-size: 15px;
+}
+
+.grid-fotos {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.foto {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: #fdf0f4;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.foto.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.foto:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.foto:hover img {
+    transform: scale(1.08);
+}
+
+.foto-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(157, 64, 89, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.foto-overlay span {
+    color: white;
+    font-size: 24px;
+    transform: scale(0.6);
+    transition: var(--transition);
+}
+
+.foto:hover .foto-overlay {
+    opacity: 1;
+}
+
+.foto:hover .foto-overlay span {
+    transform: scale(1);
+}
+
+/* =========================
+   FRASE DESTACADA
+   ========================= */
+.frase {
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #fff1f5, #ffe2ea);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+}
+
+.frase.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.corazon-frase {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 25px;
+}
+
+.frase p {
+    max-width: 800px;
+    margin: auto;
+    font-family: "Dancing Script", cursive;
+    font-size: clamp(28px, 4.5vw, 46px);
+    line-height: 1.4;
+    color: var(--primary-dark);
+}
+
+/* =========================
+   CARTA INTERACTIVA
+   ========================= */
+.seccion-carta {
+    padding: 110px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+}
+
+.seccion-carta.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sobre-icono {
+    color: var(--primary);
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.seccion-carta > p {
+    color: #80666d;
+}
+
+.sobre-contenedor {
+    width: 280px;
+    margin: 50px auto 0;
+    cursor: pointer;
+}
+
+.sobre {
+    width: 280px;
+    height: 180px;
+    position: relative;
+    background: var(--primary);
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.sobre-contenedor:hover .sobre {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.solapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 100px solid var(--primary-dark);
+    z-index: 3;
+    transform-origin: top;
+    transition: transform 0.6s ease;
+}
+
+.carta-mini {
+    position: absolute;
+    width: 220px;
+    height: 130px;
+    left: 30px;
+    top: 35px;
+    background: #ffffff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: transform 0.6s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.corazon-mini {
+    width: 20px;
+    height: 20px;
+}
+
+.sobre-contenedor.abierto .solapa {
+    transform: rotateX(180deg);
+}
+
+.sobre-contenedor.abierto .carta-mini {
+    transform: translateY(-70px);
+}
+
+.texto-sobre {
+    margin-top: 25px;
+    color: var(--primary-dark);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* =========================
+   CARTA COMPLETA (MODAL)
+   ========================= */
+.carta-completa {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 10, 15, 0.75);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.carta-completa.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carta-contenido {
+    width: 100%;
+    max-width: 650px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    background: #fffafc;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    transform: translateY(30px) scale(0.95);
+    transition: var(--transition);
+}
+
+.carta-completa.visible .carta-contenido {
+    transform: translateY(0) scale(1);
+}
+
+.cerrar-carta,
+.cerrar-visor {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #fce4ec;
+    color: var(--primary-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: var(--transition);
+}
+
+.cerrar-carta:hover,
+.cerrar-visor:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.corazon-carta {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 20px;
+}
+
+.carta-contenido h2 {
+    font-family: "Dancing Script", cursive;
+    text-align: center;
+    font-size: 48px;
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+}
+
+.texto-carta p {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+
+.texto-carta .firma {
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+    color: var(--primary);
+    font-size: 32px;
+    margin-top: 30px;
+}
+
+.corazon-pequeno {
+    width: 14px;
+    height: 14px;
+    margin-left: 6px;
+}
+
+.carino {
+    text-align: center;
+    font-size: 14px;
+    color: #80666d;
+}
+
+/* =========================
+   SECCIÓN FINAL
+   ========================= */
+.final {
+    min-height: 60vh;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--primary-gradient);
+    color: white;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+}
+
+.final.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.corazon-final {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 25px;
+    background: white;
+}
+
+.corazon-final::before,
+.corazon-final::after {
+    background: white;
+}
+
+.final h2 {
+    color: white;
+}
+
+.final p {
+    max-width: 550px;
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.final .boton-principal {
+    background: #ffffff;
+    color: var(--primary-dark);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.final .boton-principal:hover {
+    background: #fff0f3;
+}
+
+/* =========================
+   VISOR DE FOTOS
+   ========================= */
+.visor {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 2000;
+}
+
+.visor.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.visor img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+   BOTÓN DE MÚSICA
+   ========================= */
+.boton-musica {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    box-shadow: var(--shadow-soft);
+    z-index: 900;
+    transition: var(--transition);
+}
+
+.boton-musica:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-hover);
+}
+
+/* =========================
+   ANIMACIÓN Y ELEMENTOS FLOTANTES
+   ========================= */
+#corazones {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.corazon-flotante {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0;
+    animation: subirCorazon linear forwards;
+}
+
+.confeti {
+    position: fixed;
+    top: -30px;
+    z-index: 3000;
+    pointer-events: none;
+    animation: caerConfeti 3.5s linear forwards;
+}
+
+/* Keyframes */
+@keyframes latido {
+    0%, 100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.15); }
+}
+
+@keyframes saltar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+@keyframes flotar {
+    0%, 100% { transform: rotate(-45deg) translateY(0); }
+    50% { transform: rotate(-45deg) translateY(-15px); }
+}
+
+@keyframes subirCorazon {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 0; }
+    15% { opacity: 0.7; }
+    85% { opacity: 0.5; }
+    100% { transform: translateY(-110vh) rotate(-45deg); opacity: 0; }
+}
+
+@keyframes caerConfeti {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+@media (max-width: 768px) {
+    .grid-fotos {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+    }
+    
+    .foto {
+        height: 180px;
+    }
+
+    .carta-contenido {
+        padding: 40px 20px;
+    }
+
+    .carta-contenido h2 {
+        font-size: 38px;
+    }
+
+    .texto-carta p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-fotos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .boton-principal {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+
+    .sobre-contenedor, .sobre {
+        width: 240px;
+    }
+
+    .solapa {
+        border-left-width: 120px;
+        border-right-width: 120px;
+    }
+
+    .carta-mini {
+        width: 180px;
+        left: 30px;
+    }
+}
