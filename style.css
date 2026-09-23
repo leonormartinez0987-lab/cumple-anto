@@ -7,6 +7,7 @@
     --primary-dark: #9d2b48;
     --accent: #f4acb7;
     --gold: #d4af37;
+    --gold-dark: #b38f2a;
     --bg-main: #fff8f9;
     --bg-card: #ffffff;
     --text-main: #4a3e3d;
@@ -378,7 +379,7 @@ body {
 }
 
 /* =========================================
-   SECCIÓN CARTA 3D INTERACTIVA
+   SECCIÓN CARTA 3D INTERACTIVA (MEJORADA)
    ========================================= */
 .seccion-carta {
     padding: 100px 20px;
@@ -398,13 +399,13 @@ body {
 }
 
 .escenario-sobre {
-    perspective: 1000px;
+    perspective: 1200px;
     margin-top: 50px;
 }
 
 .sobre-contenedor {
-    width: 300px;
-    height: 200px;
+    width: 320px;
+    height: 220px;
     margin: 0 auto;
     position: relative;
     cursor: pointer;
@@ -413,63 +414,136 @@ body {
 .sobre {
     width: 100%;
     height: 100%;
-    background: var(--primary-dark);
+    background: #87233c;
     border-radius: 12px;
     position: relative;
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 15px 35px rgba(135, 35, 60, 0.25);
     transition: var(--transition);
+    transform-style: preserve-3d;
 }
 
+/* Solapa Superior (Animada en 3D) */
 .solapa-superior {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    border-left: 150px solid transparent;
-    border-right: 150px solid transparent;
-    border-top: 110px solid var(--primary);
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 125px solid #a83250;
     transform-origin: top;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 4;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s 0.3s;
+    z-index: 5;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
 
-.solapas-laterales {
+.solapa-inferior {
     position: absolute;
-    inset: 0;
-    background: var(--primary-dark);
-    border-radius: 12px;
-    clip-path: polygon(0 0, 150px 100px, 300px 0, 300px 200px, 0 200px);
-    z-index: 3;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 120px solid #912741;
+    z-index: 4;
+    border-radius: 0 0 12px 12px;
 }
 
+.solapa-izquierda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 110px solid transparent;
+    border-bottom: 110px solid transparent;
+    border-left: 170px solid #7d2037;
+    z-index: 3;
+    border-radius: 12px 0 0 12px;
+}
+
+.solapa-derecha {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 110px solid transparent;
+    border-bottom: 110px solid transparent;
+    border-right: 170px solid #7d2037;
+    z-index: 3;
+    border-radius: 0 12px 12px 0;
+}
+
+/* Carta interior que sale hacia arriba */
 .carta-previa {
     position: absolute;
     bottom: 15px;
     left: 20px;
     right: 20px;
-    height: 150px;
-    background: white;
+    height: 180px;
+    background: #ffffff;
     border-radius: 8px;
     z-index: 2;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lineas-carta-previa {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lineas-carta-previa span {
+    height: 4px;
+    background: #f5d4db;
+    border-radius: 4px;
+}
+
+.lineas-carta-previa span:nth-child(2) {
+    width: 70%;
+}
+
+/* Sello de lacre dorado */
+.sello-lacre {
+    position: absolute;
+    top: 105px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: radial-gradient(circle, var(--gold) 0%, var(--gold-dark) 100%);
+    border-radius: 50%;
+    z-index: 6;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.6s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.4);
+    transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.sello-corazon {
-    color: var(--primary);
-    font-size: 28px;
+.sello-texto {
+    color: #ffffff;
+    font-size: 20px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
 .sombra-sobre {
-    width: 80%;
+    width: 85%;
     height: 20px;
-    background: rgba(0,0,0,0.15);
+    background: rgba(135, 35, 60, 0.2);
     border-radius: 50%;
-    margin: 20px auto 0;
-    filter: blur(5px);
+    margin: 25px auto 0;
+    filter: blur(6px);
     transition: var(--transition);
 }
 
@@ -482,13 +556,19 @@ body {
     opacity: 0.7;
 }
 
+/* Estado Abierto */
 .sobre-contenedor.abierto .solapa-superior {
     transform: rotateX(180deg);
     z-index: 1;
 }
 
+.sobre-contenedor.abierto .sello-lacre {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
 .sobre-contenedor.abierto .carta-previa {
-    transform: translateY(-80px);
+    transform: translateY(-120px);
 }
 
 .instruccion-sobre {
