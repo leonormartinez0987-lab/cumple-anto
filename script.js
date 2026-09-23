@@ -10,7 +10,7 @@ function comenzar() {
 }
 
 /* =========================================
-   CARTA INTERACTIVA
+   CARTA INTERACTIVA MEJORADA
    ========================================= */
 function abrirCarta() {
     const sobreContenedor = document.querySelector(".sobre-contenedor");
@@ -18,12 +18,14 @@ function abrirCarta() {
     
     if (!sobreContenedor || !cartaModal) return;
     
+    // Iniciar secuencia de apertura del sobre
     sobreContenedor.classList.add("abierto");
     
+    // Retrasar la apertura del modal para sincronizarlo con la animación de extracción
     setTimeout(() => {
         cartaModal.classList.add("visible");
         document.body.style.overflow = "hidden";
-    }, 700);
+    }, 850);
 }
 
 function cerrarCarta() {
@@ -35,6 +37,7 @@ function cerrarCarta() {
     cartaModal.classList.remove("visible");
     document.body.style.overflow = "";
     
+    // Regresar el sobre a su posición original gradualmente
     setTimeout(() => {
         if (sobreContenedor) sobreContenedor.classList.remove("abierto");
     }, 400);
@@ -169,7 +172,7 @@ function controlarMusica() {
             boton.classList.add("reproduciendo");
             boton.querySelector(".icono-nota").textContent = "❙❙";
         }).catch(() => {
-            console.log("El navegador bloqueó el auto-play.");
+            console.log("El navegador bloqueó la reproducción automática.");
         });
     } else {
         musica.pause();
