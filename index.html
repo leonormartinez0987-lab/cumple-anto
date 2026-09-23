@@ -62,7 +62,6 @@
         </div>
 
         <div class="grid-fotos">
-            <!-- Autogeneración dinámica de las 60 tarjetas de fotos -->
             <script>
                 document.write(Array.from({length: 60}, (_, i) => `
                     <div class="foto revelable" onclick="abrirFoto(this.querySelector('img'))">
@@ -99,9 +98,21 @@
             <div class="sobre-contenedor" onclick="abrirCarta()">
                 <div class="sobre">
                     <div class="solapa-superior"></div>
-                    <div class="solapas-laterales"></div>
+                    <div class="solapa-izquierda"></div>
+                    <div class="solapa-derecha"></div>
+                    <div class="solapa-inferior"></div>
+                    
                     <div class="carta-previa">
-                        <div class="sello-corazon">♥</div>
+                        <div class="lineas-carta-previa">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <!-- Sello de Lacre Elegante -->
+                    <div class="sello-lacre">
+                        <span class="sello-texto">♥</span>
                     </div>
                 </div>
                 <div class="sombra-sobre"></div>
@@ -170,10 +181,9 @@
         <span class="onda-musica"></span>
     </button>
 
-    <!-- Audio de apoyo (si se desea usar audio local, colocar 'musica/amor-violento.mp3') -->
     <audio id="musica" loop preload="auto">
-        <source src="amorviolento.mp3" type="audio/mpeg">
-        <!-- <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-love-111666.mp3" type="audio/mpeg"> -->
+        <source src="musica/amor-violento.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-love-111666.mp3" type="audio/mpeg">
     </audio>
 
     <script src="script.js"></script>
